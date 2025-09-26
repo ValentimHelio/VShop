@@ -6,6 +6,8 @@
 			-> Pomelo.EntityFrameworkCore.MySql
 			-> Microsoft.EntityFrameworkCore.Design
 
+			-> AutoMapper -> 14.0.0
+
 ==> EF Core Migrations : Ferramenta dotnet-ef
 	-> instalar ferramenta EF Core Migration Tools
 		--> dotnet tool install --global dotnet-ef
