@@ -1,0 +1,7 @@
+
+
+===> VShop.ProducApi
+
+		--> Pacotes para instalar
+			-> Pomelo.EntityFrameworkCore.MySql
+			-> Microsoft.EntityFrameworkCore.Design
