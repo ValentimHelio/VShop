@@ -5,3 +5,13 @@
 		--> Pacotes para instalar
 			-> Pomelo.EntityFrameworkCore.MySql
 			-> Microsoft.EntityFrameworkCore.Design
+
+==> EF Core Migrations : Ferramenta dotnet-ef
+	-> instalar ferramenta EF Core Migration Tools
+		--> dotnet tool install --global dotnet-ef
+	-> atualizar ferramenta EF Core Migration Tools
+		--> dotnet tool update --global dotnet-ef
+	-> Uso:
+		--> dotnet ef migrations add <nome-migracao>
+		--> dotnet ef migrations remove
+		--> dotnet ef database update
