@@ -4,11 +4,11 @@ using VShop.ProducApi.Models;
 
 namespace VShop.ProducApi.Repositories;
 
-public class ProductReporitory : IProductReporitory
+public class ProductRepository : IProductRepository
 {
     private readonly AppDbContext _context;
 
-    public ProductReporitory(AppDbContext context)
+    public ProductRepository(AppDbContext context)
     {
         _context = context;
     }

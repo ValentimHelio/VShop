@@ -2,7 +2,7 @@
 
 namespace VShop.ProducApi.Repositories;
 
-public interface IProductReporitory
+public interface IProductRepository
 {
     Task<IEnumerable<Product>> GetAll();
     Task<Product> GetById(int id);
