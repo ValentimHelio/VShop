@@ -45,7 +45,7 @@ public class ProductsController : ControllerBase
         await _productService.AddProduct(produtoDto);
 
         return new CreatedAtRouteResult("GetProduct",
-            new { id = produtoDto.Id }, produtoDto);
+            new { id = produtoDto.ProductId }, produtoDto);
     }
 
     [HttpPut]

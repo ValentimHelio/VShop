@@ -8,7 +8,7 @@ namespace VShop.ProducApi.DTOs;
 
 public class ProductDTO
 {
-    public int Id { get; set; }
+    public int ProductId { get; set; }
 
     [Required(ErrorMessage = "The Name is Required")]
     [MinLength(3)]
@@ -31,6 +31,8 @@ public class ProductDTO
     [MaxLength(250)]
     [DisplayName("Product Image")]
     public string ImageURL { get; set; }
+
+    public string CategoryName { get; set; }
 
     public int CategoryId { get; set; }
     [JsonIgnore]
