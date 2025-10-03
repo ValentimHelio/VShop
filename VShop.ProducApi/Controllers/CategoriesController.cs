@@ -59,12 +59,9 @@ public class CategoriesController : ControllerBase
             categoryDto);
     }
 
-    [HttpPut("{id:int}")]
-    public async Task<ActionResult> Put(int id, [FromBody] CategoryDTO categoryDto)
+    [HttpPut]
+    public async Task<ActionResult> Put([FromBody] CategoryDTO categoryDto)
     {
-        if (id != categoryDto.CategoryId)
-            return BadRequest();
-
         if (categoryDto == null)
             return BadRequest();
 

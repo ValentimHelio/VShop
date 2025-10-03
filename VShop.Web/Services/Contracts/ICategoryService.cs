@@ -5,4 +5,9 @@ namespace VShop.Web.Services.Contracts;
 public interface ICategoryService
 {
     Task<IEnumerable<CategoryViewModel>> GetAllCategories();
+
+    Task<CategoryViewModel> FindCategoryById(int id);
+    Task<CategoryViewModel> CreateCategory(CategoryViewModel productVM);
+    Task<CategoryViewModel> UpdateCategory(CategoryViewModel productVM);
+    Task<bool> DeleteCategoryById(int id);
 }

@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VShop.Web.Models;
 using VShop.Web.Services.Contracts;
@@ -22,7 +21,7 @@ public class ProductsController : Controller
     public async Task<ActionResult<IEnumerable<ProductViewModel>>> Index()
     {
         var result = await _productService.GetAllProducts();
-        if(result is null)
+        if (result is null)
             return View("Error");
 
         return View(result);
@@ -81,7 +80,7 @@ public class ProductsController : Controller
     [HttpGet]
     public async Task<ActionResult<ProductViewModel>> DeleteProduct(int id)
     {
-        var result = await _productService.FindProductById(id); 
+        var result = await _productService.FindProductById(id);
 
         if (result is null)
             return View("Error");
@@ -99,5 +98,5 @@ public class ProductsController : Controller
 
         return RedirectToAction("Index");
     }
-   
+
 }
