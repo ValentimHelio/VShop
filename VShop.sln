@@ -16,6 +16,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShop.Web", "VShop.Web\VShop.Web.csproj", "{3C703338-1B5D-4393-8C55-B320C0F95B04}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VShop.IdentityServer", "VShop.IdentityServer\VShop.IdentityServer.csproj", "{A4F87A62-AE47-46F2-94B5-187F57259CCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{3C703338-1B5D-4393-8C55-B320C0F95B04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3C703338-1B5D-4393-8C55-B320C0F95B04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3C703338-1B5D-4393-8C55-B320C0F95B04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F87A62-AE47-46F2-94B5-187F57259CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F87A62-AE47-46F2-94B5-187F57259CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F87A62-AE47-46F2-94B5-187F57259CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F87A62-AE47-46F2-94B5-187F57259CCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{77400AD4-244D-4DBA-BE6B-C8CFD001D977} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{3C703338-1B5D-4393-8C55-B320C0F95B04} = {42312715-5730-4CE4-8C15-C6066A9F5A29}
+		{A4F87A62-AE47-46F2-94B5-187F57259CCF} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {12AD4077-51D7-4A7F-8E19-171EFC551C69}

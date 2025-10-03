@@ -17,3 +17,19 @@
 		--> dotnet ef migrations add <nome-migracao>
 		--> dotnet ef migrations remove
 		--> dotnet ef database update
+
+==> Usando o Duende IdentityServer - Templates e Interfaces com o Usuário
+	--> Instalar os templates do IdentityServer
+		--> dotnet new -- install Duende.IdentityServer.Templates
+	--> Incluir a interface para Login, Logout, etc. (Razer Pager)
+		--> dotnet new isui
+
+	==> Usando o Duende IdentityServer - Referências
+	 --> Instalar a referência do Duende 
+		=> Duende.IdentityServer.AspNetIdentity
+	--> Incluir as referências do Itendity da ASP.NET Core
+		=> Microsoft.AspNetCore.Identity.EntityFrameWorkCore
+		=> Microsoft.AspNetCore.Identity.UI
+	--> Incluir a referência Promelo para MySQL
+		=> Pomelo.EntityFrameworkCore.MySql
+		=> Pomelo.EntityFrameworkCore.Design
