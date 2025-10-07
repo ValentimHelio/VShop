@@ -1,93 +1,95 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using VShop.Web.Models;
+using VShop.Web.Roles;
 using VShop.Web.Services.Contracts;
 
-namespace VShop.Web.Controllers
+namespace VShop.Web.Controllers;
+[Authorize]
+public class CategoriesController : Controller
 {
-    public class CategoriesController : Controller
+    private readonly ICategoryService _categoryService;
+
+    public CategoriesController(ICategoryService categoryService)
     {
-        private readonly ICategoryService _categoryService;
+        _categoryService = categoryService;
+    }
 
-        public CategoriesController(ICategoryService categoryService)
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<CategoryViewModel>>> Index()
+    {
+        var result = await _categoryService.GetAllCategories();
+        if (result is null)
+            return View("Error");
+
+        return View(result);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> CreateCategory()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateProduct(CategoryViewModel categoryVM)
+    {
+        if (ModelState.IsValid)
         {
-            _categoryService = categoryService;
+            var result = await _categoryService.CreateCategory(categoryVM);
+
+            if (result != null)
+                return RedirectToAction(nameof(Index));
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<CategoryViewModel>>> Index()
+        return View(categoryVM);
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> UpdateCategory(int id)
+    {
+        var result = await _categoryService.FindCategoryById(id);
+
+        if (result is null)
+            return View("Error");
+
+        return View(result);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateCategory(CategoryViewModel CategoryVM)
+    {
+        if (ModelState.IsValid)
         {
-            var result = await _categoryService.GetAllCategories();
-            if (result is null)
-                return View("Error");
+            var result = await _categoryService.UpdateCategory(CategoryVM);
 
-            return View(result);
+            if (result is not null)
+                return RedirectToAction(nameof(Index));
         }
+        return View(CategoryVM);
+    }
 
-        [HttpGet]
-        public async Task<IActionResult> CreateCategory()
-        {
-            return View();
-        }
+    [HttpGet]
+    public async Task<ActionResult<CategoryViewModel>> DeleteCategory(int id)
+    {
+        var result = await _categoryService.FindCategoryById(id);
 
-        [HttpPost]
-        public async Task<IActionResult> CreateProduct(CategoryViewModel categoryVM)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _categoryService.CreateCategory(categoryVM);
+        if (result is null)
+            return View("Error");
 
-                if (result != null)
-                    return RedirectToAction(nameof(Index));
-            }
+        return View(result);
+    }
 
-            return View(categoryVM);
-        }
+    [HttpPost(), ActionName("DeleteCategory")]
+    [Authorize(Roles = Role.Admin)]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        var result = await _categoryService.DeleteCategoryById(id);
 
-        [HttpGet]
-        public async Task<IActionResult> UpdateCategory(int id)
-        {
-            var result = await _categoryService.FindCategoryById(id);
+        if (!result)
+            return View("Error");
 
-            if (result is null)
-                return View("Error");
-
-            return View(result);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> UpdateCategory(CategoryViewModel CategoryVM)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _categoryService.UpdateCategory(CategoryVM);
-
-                if (result is not null)
-                    return RedirectToAction(nameof(Index));
-            }
-            return View(CategoryVM);
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<CategoryViewModel>> DeleteCategory(int id)
-        {
-            var result = await _categoryService.FindCategoryById(id);
-
-            if (result is null)
-                return View("Error");
-
-            return View(result);
-        }
-
-        [HttpPost(), ActionName("DeleteCategory")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var result = await _categoryService.DeleteCategoryById(id);
-
-            if (!result)
-                return View("Error");
-
-            return RedirectToAction("Index");
-        }
+        return RedirectToAction("Index");
     }
 }

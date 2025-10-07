@@ -33,3 +33,11 @@
 	--> Incluir a referência Promelo para MySQL
 		=> Pomelo.EntityFrameworkCore.MySql
 		=> Pomelo.EntityFrameworkCore.Design
+
+Implementar a autenticação: incluir referências
+	-> Instalar as referências no projeto VShop.Web
+		-> Microsoft.AspNetCore.Authentication
+		-> Microsoft.AspNetCore.Authentication.OpenIdConnect
+		-> System.IdentityModel.Tokens.Jwt
+	-> Instalar as referências no projeto VShop.Api
+		-> Microsoft.AspNetCore.Authentication.JwtBearer
